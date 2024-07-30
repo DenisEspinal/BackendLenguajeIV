@@ -33,7 +33,7 @@ CALL InsertVehiculos('2014', 'Eléctrico', '105 HP', 2, 'Tucson', 2);
 
 
 -- Procedimiento almacenado para actualizar un registro en la tabla VEHICULOS
-CREATE PROCEDURE UpdateVehiculos(IN p_año_veh VARCHAR(4), IN p_mot_veh VARCHAR(50), IN p_pot_veh VARCHAR(50), IN p_cod_marca BIGINT, IN p_model VARCHAR(50), IN p_tip_tran BIGINT, IN p_cod_veh BIGINT)
+CREATE PROCEDURE UpdateVehiculos(IN p_cod_veh BIGINT, IN p_año_veh VARCHAR(4), IN p_mot_veh VARCHAR(50), IN p_pot_veh VARCHAR(50), IN p_cod_marca BIGINT, IN p_model VARCHAR(50), IN p_tip_tran BIGINT)
     BEGIN
         -- En caso de error, se deshace la transacción anterior
         ROLLBACK;
@@ -63,7 +63,7 @@ CREATE PROCEDURE UpdateVehiculos(IN p_año_veh VARCHAR(4), IN p_mot_veh VARCHAR(
     END IF;
 END;
 
-CALL UpdateVehiculos('2024','electri' , 'HOLA', 3, 'Corolla', 2, 15);
+CALL UpdateVehiculos( 1,'2023','electri' , 'HOLA', 3, 'Corolla', 2);
 
 
 

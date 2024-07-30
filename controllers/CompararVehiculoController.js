@@ -33,6 +33,22 @@ const postVehiculos = async (req, res) => {
     });
 };
 
+const putVehiculos = async (req, res) => {
+    let veh = req.body;
+    var sql = "SET @cod_vehiculo = ?; SET @año_vehiculo = ?; SET @mot_vehiculo = ?; SET @pot_vehiculo = ?; SET @cod_marca = ?; SET @modelo = ?; SET @cod_tipo_transmision = ?;\
+    CALL UpdateVehiculos( cod_vehiculo,@año_vehiculo, @mot_vehiculo, @pot_vehiculo, @cod_marca, @modelo, @cod_tipo_transmision);";
+
+    mysqlConnection.query(sql, [veh.cod_vehiculo, veh.año_vehiculo, veh.mot_vehiculo, veh.pot_vehiculo, veh.cod_marca, veh.modelo, veh.cod_tipo_transmision], (err, rows, fields) => {
+        console.log("Valores recibidos:", veh);
+        if (!err)
+            res.send("Actualización Correcta");
+        else
+            console.log(err);
+    });
+};
+
+//CALL UpdateVehiculos( 1,'2023','electri' , 'HOLA', 3, 'Corolla', 2);
+
 const getVehiculo= async (req, res) => {
     const params = [
         req.params.search,
@@ -51,4 +67,6 @@ const getVehiculo= async (req, res) => {
    });
 }
 
-export{getVehiculos, postVehiculos, getVehiculo}
+
+
+export{getVehiculos, postVehiculos, getVehiculo, putVehiculos}
