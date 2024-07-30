@@ -65,5 +65,21 @@ const postRendimientos = async (req, res) => {
     });
 };
 
+const putMarcas = async (req, res) => {
+    let marc = req.body;
+    var sql = "CALL UpdateMarcas(?, ?, ?)";
 
-export {getMarcas, postMarcas, getRendimientos, postRendimientos}
+    mysqlConnection.query(sql, [marc.cod_marca, marc.cod_tipo_vehiculo, marc.nom_marca], (err, result, fields) => {
+        if (err) {
+            console.error('Error al ejecutar la consulta:', err);
+            res.status(500).json({ msg: 'Error al insertar la marca' });
+        } else {
+            res.json({
+                result
+            });
+        }
+    });
+};
+
+
+export {getMarcas, postMarcas, getRendimientos, postRendimientos, putMarcas}

@@ -1,4 +1,4 @@
--- Active: 1718683999314@@142.44.161.115@3306@1900Pac2Equ3
+-- Active: 1718735124373@@142.44.161.115@3306@1900Pac2Equ3
 
 
 -- Procedimiento para insertar estadísticas
@@ -27,7 +27,8 @@ CREATE PROCEDURE UpdateEstadisticas(p_cod_veh BIGINT, nom_est VARCHAR(100), IN v
     COMMIT; -- Confirma la transacción para hacer los cambios permanentes en la base de datos
     END; 
 
-CALL UpdateEstadisticas(3, 'PROMEDIO', '5', '2024-07-08', 17); --llamada al procedimiento UpdateEstadisticas
+CALL UpdateEstadisticas(5, 'VELOCIDAD', '10', '2024-05-12', 30);
+
  
 
 

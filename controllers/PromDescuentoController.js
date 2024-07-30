@@ -35,6 +35,22 @@ const postPromDescuentos = async (req, res) => {
     });
 };
 
+const putPromDescuentos = async (req, res) => {
+    let prom = req.body;
+    var sql = "CALL UpdatePromDescuentos(?, ?, ?, ?, ?, ?, ?)";
+
+    mysqlConnection.query(sql, [prom.fec_prom, prom.promocion, prom.descuento, prom.disponibilidad, prom.cod_tipo_vehiculo, prom.cod_marca, prom.cod_promo], (err, result, fields) => {
+        if (err) {
+            console.error('Error al ejecutar la consulta:', err);
+            res.status(500).json({ msg: 'Error al insertar  promdescuento' });
+        } else {
+            res.json({
+                result
+            });
+        }
+    });
+};
 
 
-export {getPromDescuentos, postPromDescuentos}
+
+export {getPromDescuentos, postPromDescuentos, putPromDescuentos}

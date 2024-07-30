@@ -1,16 +1,18 @@
 import Express from 'express'
-import { getEstadisticas, getEstadisticas2, postEstadisticas, getMantenimientos, postMantenimientos, getEvaluaciones, postEvaluaciones, getResenias, postResenias  } from '../controllers/EstadisticasController.js'
+import { getEstadisticas, getPrecios, postEstadisticas, getMantenimientos, postMantenimientos, getEvaluaciones, postEvaluaciones, getResenias, postResenias, putEstadisticas, } from '../controllers/EstadisticasController.js'
 
 const apiEstadisticas = Express();
-const apiEstadisticas2 = Express();
+const apiPrecios = Express();
 const apiMantenimientos = Express();
 const apiEvaluaciones = Express();
 const apiResenias = Express();
 
 
+
 apiEstadisticas.get('', getEstadisticas)
 apiEstadisticas.post('', postEstadisticas)
-apiEstadisticas2.get('', getEstadisticas2)
+apiEstadisticas.put('', putEstadisticas)
+apiPrecios.get('', getPrecios)
 apiMantenimientos.get('', getMantenimientos)
 apiMantenimientos.post('', postMantenimientos)
 apiEvaluaciones.get('', getEvaluaciones)
@@ -18,4 +20,4 @@ apiEvaluaciones.post('', postEvaluaciones)
 apiResenias.get('', getResenias)
 apiResenias.post('', postResenias)
 
-export {apiEstadisticas, apiEstadisticas2, apiMantenimientos, apiEvaluaciones, apiResenias} 
+export {apiEstadisticas, apiPrecios, apiMantenimientos, apiEvaluaciones, apiResenias} 

@@ -34,11 +34,29 @@ const postEstadisticas = async (req, res) => {
         }
     });
 };
+
+
+const putEstadisticas = async (req, res) => {
+    let est = req.body;
+    var sql = "CALL UpdateEstadisticas(?, ?, ?, ?, ?)";
+
+    mysqlConnection.query(sql, [est.cod_vehiculo, est.nom_estadistica, est.valor, est.fec_estadistica, est.cod_estadistica], (err, result, fields) => {
+        if (err) {
+            console.error('Error al ejecutar la consulta:', err);
+            res.status(500).json({ msg: 'Error al ejecutar la consulta', error: err });
+        } else {
+            res.json({ result });
+        }
+    });
+};
+
+
+
 //-----------------------------------------------------------------------------------------
 
 //-------------------------------------HISTORIAL-----------------------------------------
-const getEstadisticas2= async (_, res) => {
-    mysqlConnection.query('CALL SelectEstadisticas2()', (err, rows, fields) => {
+const getPrecios= async (_, res) => {
+    mysqlConnection.query('CALL SelectPrecios()', (err, rows, fields) => {
         if (!err) {
             res.status(200).json(rows[0]);
         } else {
@@ -81,6 +99,8 @@ const postMantenimientos = async (req, res) => {
     });
 };
 
+
+
 //------------------------------------------------------------------------------------------
 
 //-------------------------------------EVALUACIONES-----------------------------------------
@@ -115,6 +135,7 @@ const postEvaluaciones = async (req, res) => {
         }
     });
 };
+
 
 //------------------------------------------------------------------------------------------
 
@@ -151,4 +172,4 @@ const postResenias = async (req, res) => {
     });
 };
 
-export{getEstadisticas, postEstadisticas, getEstadisticas2, getMantenimientos, postMantenimientos, getEvaluaciones, postEvaluaciones, getResenias, postResenias}
+export{getEstadisticas, postEstadisticas, getPrecios, getMantenimientos, postMantenimientos, getEvaluaciones, postEvaluaciones, getResenias, postResenias, putEstadisticas}
