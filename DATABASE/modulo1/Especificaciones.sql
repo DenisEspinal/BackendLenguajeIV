@@ -1,4 +1,5 @@
-CREATE PROCEDURE SelecEspecificaciones()-- Procedimiento para seleccionar estadísticas
+-- Active: 1722312730733@@142.44.161.115@3306@1900Pac2Equ3
+CREATE PROCEDURE SelecEspecificaciones()-- 
 BEGIN
     SELECT 
         v.cod_vehiculo,
@@ -6,8 +7,10 @@ BEGIN
         v.mot_vehiculo,
         tt.nom_transmision
     FROM VEHICULOS v 
-    INNER JOIN `TIPOS_TRANSMISIONES` tt ON v.cod_tipo_transmision = tt.cod_tipo_transmision -- Selecciona y ordena las estadísticas junto con el modelo del vehículo
+    INNER JOIN `TIPOS_TRANSMISIONES` tt ON v.cod_tipo_transmision = tt.cod_tipo_transmision 
     ORDER BY v.cod_vehiculo;
 END;
 
 CALL SelecEspecificaciones();
+
+
