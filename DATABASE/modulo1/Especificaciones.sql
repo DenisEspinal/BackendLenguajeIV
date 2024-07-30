@@ -1,4 +1,4 @@
--- Active: 1722312730733@@142.44.161.115@3306@1900Pac2Equ3
+-- Active: 1722312730733@@142.44.161.115@3306
 CREATE PROCEDURE SelecEspecificaciones()-- 
 BEGIN
     SELECT 
@@ -12,5 +12,3 @@ BEGIN
 END;
 
 CALL SelecEspecificaciones();
-
-
